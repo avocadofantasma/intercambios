@@ -47,7 +47,7 @@ class Participants extends React.Component {
         return (
             <div className="container">
                 <div className="row">
-                    <h4>Participantes: {this.state.persons.length} </h4>
+                    <h5>Participantes: {this.state.persons.length} / Faltantes: {this.state.persons.filter(e => !e.seen).length}</h5>
                 </div>
                 <div className="row">
                     {this.renderNames(this.state.persons, this.handleSeenClick)}
