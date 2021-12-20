@@ -66,7 +66,7 @@ app.use(cors())
 app.get('/', (req, res) => {
     console.log('working...')
     res.sendFile(path.join(publicPath, 'index.html'));
- });
+});
 
 
 app.get('/participants', (req, res) => {
@@ -74,6 +74,10 @@ app.get('/participants', (req, res) => {
 })
 
 app.get('/matches', (req, res) => {
+    if (matches.length === 0) {
+        matches = getRandomMatches();
+    }
+
     res.send(matches)
 })
 
