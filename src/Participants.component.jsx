@@ -27,7 +27,7 @@ class Participants extends React.Component {
 
     handleSeenClick(name) {
         setTimeout(() => {
-            axios.post(`${URL}/seen/${name}`)
+            axios.post(`/seen/${name}`)
                 .then(res => {
                     const persons = res.data;
                     this.setState({ persons });
@@ -36,7 +36,7 @@ class Participants extends React.Component {
     }
 
     componentDidMount() {
-        axios.get(`${URL}/matches`)
+        axios.get(`/matches`)
             .then(res => {
                 const persons = res.data;
                 this.setState({ persons });
