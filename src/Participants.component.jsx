@@ -6,6 +6,8 @@ import Participant from './Participant.component';
 import 'materialize-css';
 import { Button, Card, Row, Col } from 'react-materialize';
 
+const URL = `http://${window.location.hostname}:3000`
+
 class Participants extends React.Component {
     constructor(props) {
         super(props);
@@ -16,7 +18,6 @@ class Participants extends React.Component {
         this.handleSeenClick = this.handleSeenClick.bind(this);
     }
 
-
     renderNames(persons, handleSeenClick) {
         return (
             persons.map(person => <Participant person={person} handleSeenClick={handleSeenClick} />)
@@ -25,7 +26,7 @@ class Participants extends React.Component {
 
     handleSeenClick(name) {
         setTimeout(() => {
-            axios.post(`http://localhost:3000/seen/${name}`)
+            axios.post(`${URL}/seen/${name}`)
                 .then(res => {
                     const persons = res.data;
                     this.setState({ persons });
@@ -34,7 +35,7 @@ class Participants extends React.Component {
     }
 
     componentDidMount() {
-        axios.get('http://localhost:3000/matches')
+        axios.get(`${URL}/matches`)
             .then(res => {
                 const persons = res.data;
                 this.setState({ persons });

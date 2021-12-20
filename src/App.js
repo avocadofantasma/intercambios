@@ -4,7 +4,6 @@ import Participants from './Participants.component';
 function App() {
   return (
     <div className="App">
-      test
       <Participants />
     </div>
   );
