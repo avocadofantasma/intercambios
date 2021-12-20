@@ -6,7 +6,7 @@ import Participant from './Participant.component';
 import 'materialize-css';
 import { Button, Card, Row, Col } from 'react-materialize';
 
-const URL = `http://${window.location.hostname}:3000`
+const URL = `https://${window.location.hostname}:3000`
 
 class Participants extends React.Component {
     constructor(props) {
