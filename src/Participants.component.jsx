@@ -6,7 +6,8 @@ import Participant from './Participant.component';
 import 'materialize-css';
 import { Button, Card, Row, Col } from 'react-materialize';
 
-const URL = `https://${window.location.hostname}:3000`
+const PORT = process.env.PORT || 3000;
+const URL = `https://${window.location.hostname}:${PORT}`
 
 class Participants extends React.Component {
     constructor(props) {
