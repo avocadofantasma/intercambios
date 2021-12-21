@@ -26,13 +26,11 @@ class Participants extends React.Component {
     }
 
     handleSeenClick(name) {
-        setTimeout(() => {
-            axios.post(`/seen/${name}`)
-                .then(res => {
-                    const persons = res.data;
-                    this.setState({ persons });
-                })
-        }, 1000);
+        axios.post(`/seen/${name}`)
+            .then(res => {
+                const persons = res.data;
+                this.setState({ persons });
+            })
     }
 
     componentDidMount() {
