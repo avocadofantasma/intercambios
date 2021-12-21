@@ -31,7 +31,7 @@ const PARTICIPANTS = [
     "Mima"
 ];
 
-let matches = [];
+let matches = require('./matches.json') || [];
 let matched = new Set();
 
 function getRandomInt(min, max) {
@@ -99,6 +99,8 @@ app.post('/seen/:name', (req, res) => {
 })
 
 app.listen(port, () => {
+    console.log('matches:####')
+    console.log(matches)
     console.log(`Example app listening at http://localhost:${port}`)
 })
 

@@ -1,0 +1,102 @@
+[
+    {
+        "name": "Luis",
+        "match": "Tany",
+        "seen": false
+    },
+    {
+        "name": "Tany",
+        "match": "Pipo",
+        "seen": false
+    },
+    {
+        "name": "Roberto",
+        "match": "Mix",
+        "seen": false
+    },
+    {
+        "name": "Monse",
+        "match": "Aurora",
+        "seen": false
+    },
+    {
+        "name": "Dido",
+        "match": "Fany",
+        "seen": false
+    },
+    {
+        "name": "Daniel",
+        "match": "Luis",
+        "seen": false
+    },
+    {
+        "name": "Mix",
+        "match": "Sergio",
+        "seen": false
+    },
+    {
+        "name": "Diego",
+        "match": "Dido",
+        "seen": false
+    },
+    {
+        "name": "Itzel",
+        "match": "Rosa",
+        "seen": false
+    },
+    {
+        "name": "Fatima",
+        "match": "Itzel",
+        "seen": true
+    },
+    {
+        "name": "Rafa",
+        "match": "Roberto",
+        "seen": false
+    },
+    {
+        "name": "Layan",
+        "match": "Carlos",
+        "seen": false
+    },
+    {
+        "name": "Carlos",
+        "match": "Monse",
+        "seen": false
+    },
+    {
+        "name": "Fany",
+        "match": "Rafa",
+        "seen": false
+    },
+    {
+        "name": "Aurora",
+        "match": "Diego",
+        "seen": false
+    },
+    {
+        "name": "Rosa",
+        "match": "Mima",
+        "seen": false
+    },
+    {
+        "name": "Sergio",
+        "match": "Karla",
+        "seen": false
+    },
+    {
+        "name": "Karla",
+        "match": "Layan",
+        "seen": false
+    },
+    {
+        "name": "Pipo",
+        "match": "Fatima",
+        "seen": true
+    },
+    {
+        "name": "Mima",
+        "match": "Daniel",
+        "seen": false
+    }
+]
