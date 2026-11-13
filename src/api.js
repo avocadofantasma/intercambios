@@ -19,6 +19,12 @@ export const getMe = (token) => request(`/api/me/${encodeURIComponent(token)}`);
 export const reveal = (token) =>
   request(`/api/me/${encodeURIComponent(token)}/reveal`, { method: 'POST' });
 
+export const saveWishes = (token, wishes) =>
+  request(`/api/me/${encodeURIComponent(token)}/wishes`, {
+    method: 'PUT',
+    body: JSON.stringify({ wishes }),
+  });
+
 export const adminList = (key) => request('/api/admin', { token: key });
 export const adminDraw = (key, names) =>
   request('/api/admin/draw', { token: key, method: 'POST', body: JSON.stringify({ names }) });

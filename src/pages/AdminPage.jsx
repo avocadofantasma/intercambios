@@ -12,7 +12,7 @@ function readKey() {
 }
 
 function whatsappLink(name, url) {
-  const text = `¡Hola ${name}! 🎁 Ya quedó el sorteo del intercambio.\n\nDescubre a quién le regalas aquí (es sólo para ti, no lo compartas):\n${url}`;
+  const text = `¡Hola ${name}! 🎁 Ya quedó el sorteo del intercambio.\n\nDescubre a quién le regalas y escribe lo que te gusta aquí (es sólo para ti, no lo compartas):\n${url}`;
   return `https://wa.me/?text=${encodeURIComponent(text)}`;
 }
 
@@ -149,6 +149,9 @@ export default function AdminPage() {
                     <p className="truncate font-semibold">{p.name}</p>
                     <p className={`text-sm ${p.seen ? 'text-pine' : 'text-muted'}`}>
                       {p.seen ? '✓ Ya lo vio' : 'Pendiente'}
+                      <span className={p.hasWishes ? 'text-pine' : 'text-muted'}>
+                        {' · '}{p.hasWishes ? '✓ Escribió sus gustos' : 'Sin gustos aún'}
+                      </span>
                     </p>
                   </div>
                   <button onClick={() => copy(p.name, url)} className={`${button} border border-line`}>

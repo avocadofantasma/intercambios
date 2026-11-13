@@ -9,7 +9,7 @@ async function celebrate() {
 }
 
 export default function RevealCard({ name, onOpen }) {
-  const [match, setMatch] = useState(null);
+  const [result, setResult] = useState(null); // { match, matchWishes }
   const [opening, setOpening] = useState(false);
   const [failed, setFailed] = useState(false);
 
@@ -17,7 +17,7 @@ export default function RevealCard({ name, onOpen }) {
     setOpening(true);
     setFailed(false);
     try {
-      setMatch(await onOpen());
+      setResult(await onOpen());
       celebrate();
     } catch {
       setFailed(true);
@@ -27,10 +27,10 @@ export default function RevealCard({ name, onOpen }) {
   }
 
   return (
-    <main className="flex flex-1 flex-col items-center justify-center text-center">
+    <main className="flex flex-col items-center pt-6 text-center">
       <p className="text-sm font-semibold tracking-wide text-berry uppercase">Hola, {name}</p>
 
-      {!match ? (
+      {!result ? (
         <>
           <h1 className="mt-2 font-display text-3xl font-extrabold sm:text-4xl">Tu regalo te espera</h1>
           <p className="mt-2 text-muted">Asegúrate de que nadie vea tu pantalla. 🙈</p>
@@ -54,7 +54,17 @@ export default function RevealCard({ name, onOpen }) {
           <p className="text-muted">Le regalas a…</p>
           <div className="relative mt-4 overflow-hidden rounded-3xl border-2 border-gold/60 bg-card px-6 py-10 shadow-xl">
             <div className="pointer-events-none absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-berry via-gold to-pine" aria-hidden />
-            <p className="font-display text-5xl font-extrabold break-words text-pine sm:text-6xl">{match}</p>
+            <p className="font-display text-5xl font-extrabold break-words text-pine sm:text-6xl">{result.match}</p>
+          </div>
+          <div className="mt-4 rounded-3xl bg-pine-soft p-5 text-left">
+            <p className="text-sm font-semibold text-pine">Le gusta…</p>
+            {result.matchWishes ? (
+              <p className="mt-1 whitespace-pre-line break-words">{result.matchWishes}</p>
+            ) : (
+              <p className="mt-1 text-sm text-muted">
+                Todavía no escribe nada. Vuelve a abrir este link más tarde para ver si ya puso pistas.
+              </p>
+            )}
           </div>
           <p className="mx-auto mt-6 max-w-xs text-sm text-muted">
             Es secreto. 🤫 Si se te olvida, vuelve a abrir este mismo link.

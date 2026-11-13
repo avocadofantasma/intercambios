@@ -1,13 +1,14 @@
 import { useEffect, useState } from 'react';
 import { getMe, reveal } from '../api.js';
 import RevealCard from '../components/RevealCard.jsx';
+import WishesEditor from '../components/WishesEditor.jsx';
 
 export default function RevealPage({ token }) {
   const [state, setState] = useState({ status: 'loading' });
 
   useEffect(() => {
     getMe(token)
-      .then((me) => setState({ status: 'ready', name: me.name }))
+      .then((me) => setState({ status: 'ready', ...me }))
       .catch((err) => setState({ status: err.status === 404 ? 'invalid' : 'error' }));
   }, [token]);
 
@@ -31,5 +32,12 @@ export default function RevealPage({ token }) {
     );
   }
 
-  return <RevealCard name={state.name} onOpen={() => reveal(token).then((r) => r.match)} />;
+  return (
+    <>
+      <RevealCard name={state.name} onOpen={() => reveal(token)} />
+      <section className="mt-10">
+        <WishesEditor token={token} initial={state.wishes} />
+      </section>
+    </>
+  );
 }

@@ -21,6 +21,15 @@ app.post('/api/me/:token/reveal', async (req, res) => {
   result ? res.json(result) : res.status(404).json({ error: 'not_found' });
 });
 
+app.put('/api/me/:token/wishes', async (req, res) => {
+  const wishes = req.body?.wishes;
+  if (typeof wishes !== 'string' || wishes.length > db.MAX_WISHES) {
+    return res.status(400).json({ error: 'bad_request' });
+  }
+  const result = await db.saveWishes(req.params.token, wishes.trim());
+  result ? res.json(result) : res.status(404).json({ error: 'not_found' });
+});
+
 // --- Organizador ---------------------------------------------------------------
 function requireAdmin(req, res, next) {
   const expected = Buffer.from(process.env.ADMIN_TOKEN ?? '');
