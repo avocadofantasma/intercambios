@@ -1,45 +1,29 @@
 {
   "name": "intercambio",
-  "version": "0.1.0",
+  "version": "2.0.0",
   "private": true,
-  "dependencies": {
-    "@testing-library/jest-dom": "^5.16.1",
-    "@testing-library/react": "^12.1.2",
-    "@testing-library/user-event": "^13.5.0",
-    "axios": "^0.24.0",
-    "bulma": "^0.9.3",
-    "cors": "^2.8.5",
-    "materialize-css": "^1.0.0-rc.2",
-    "react": "^17.0.2",
-    "react-bulma-components": "^4.0.7",
-    "react-dom": "^17.0.2",
-    "react-materialize": "^3.10.0",
-    "react-scripts": "5.0.0",
-    "web-vitals": "^2.1.2"
+  "type": "module",
+  "engines": {
+    "node": ">=22"
   },
   "scripts": {
-    "postinstall": "npm run build",
-    "start": "node server/server.js",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "dev": "concurrently -n api,web -c blue,magenta \"node --env-file=.env.local --watch server/server.js\" \"vite\"",
+    "build": "vite build",
+    "start": "node --env-file-if-exists=.env.local server/server.js",
+    "test": "node --test \"server/**/*.test.js\""
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+  "dependencies": {
+    "@neondatabase/serverless": "^1.2.0",
+    "express": "^5.3.0"
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.3.5",
+    "@vitejs/plugin-react": "^6.3.0",
+    "canvas-confetti": "^1.9.4",
+    "concurrently": "^9.2.1",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "tailwindcss": "^4.3.5",
+    "vite": "^8.3.8"
   }
 }
