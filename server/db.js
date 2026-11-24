@@ -16,10 +16,10 @@ async function orEmpty(query) {
   }
 }
 
-/** Para el panel: nombre, link, si ya lo vio y si ya escribió qué le gusta. Nunca las asignaciones. */
+/** Para el panel: nombre, link, si ya lo vio y qué le gusta. Nunca las asignaciones. */
 export const listForAdmin = () =>
   orEmpty(db()`
-    SELECT name, token, seen, coalesce(wishes, '') <> '' AS "hasWishes"
+    SELECT name, token, seen, coalesce(wishes, '') AS wishes
     FROM matches ORDER BY position`);
 
 /** Reemplaza el sorteo completo (tabla incluida) en una sola transacción. */

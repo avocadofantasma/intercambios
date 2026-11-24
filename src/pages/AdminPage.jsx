@@ -149,8 +149,8 @@ export default function AdminPage() {
                     <p className="truncate font-semibold">{p.name}</p>
                     <p className={`text-sm ${p.seen ? 'text-pine' : 'text-muted'}`}>
                       {p.seen ? '✓ Ya lo vio' : 'Pendiente'}
-                      <span className={p.hasWishes ? 'text-pine' : 'text-muted'}>
-                        {' · '}{p.hasWishes ? '✓ Escribió sus gustos' : 'Sin gustos aún'}
+                      <span className={p.wishes ? 'text-pine' : 'text-muted'}>
+                        {' · '}{p.wishes ? '✓ Escribió sus gustos' : 'Sin gustos aún'}
                       </span>
                     </p>
                   </div>
@@ -160,6 +160,12 @@ export default function AdminPage() {
                   <a href={whatsappLink(p.name, url)} target="_blank" rel="noreferrer" className={`${button} bg-[#25D366] text-[#0b3d1f]`}>
                     WhatsApp
                   </a>
+                  {p.wishes && (
+                    <details className="w-full text-sm">
+                      <summary className="cursor-pointer font-medium text-pine">Ver sus gustos</summary>
+                      <p className="mt-2 rounded-xl bg-paper px-3 py-2 whitespace-pre-wrap break-words">{p.wishes}</p>
+                    </details>
+                  )}
                 </li>
               );
             })}
